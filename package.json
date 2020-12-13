@@ -1,0 +1,37 @@
+{
+  "name": "just-run-js",
+  "version": "0.0.0",
+  "description": "just run your js code here",
+  "bin": {
+    "just-run-js": "bin/run.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "test": "npx -n --experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iFoxMan/just-run-js.git"
+  },
+  "author": "Ivan Lisin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iFoxMan/just-run-js/issues"
+  },
+  "type": "module",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "homepage": "https://github.com/iFoxMan/just-run-js#readme",
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^23.20.0",
+    "jest": "^26.6.0",
+    "jest-cli": "^26.6.0"
+  },
+  "dependencies": {}
+}
