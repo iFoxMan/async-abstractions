@@ -1,7 +1,7 @@
 {
-  "name": "just-run-js",
+  "name": "waterfall",
   "version": "0.0.0",
-  "description": "just run your js code here",
+  "description": "",
   "bin": {
     "just-run-js": "bin/run.js"
   },

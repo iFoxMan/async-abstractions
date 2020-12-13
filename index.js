@@ -1,3 +1,3 @@
-import message from './src/message';
+import waterfall from './src/waterfall';
 
-export default message;
+export default waterfall;
