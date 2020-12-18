@@ -4,21 +4,21 @@ import waterfall from '../src/waterfall';
 
 const getFixturePath = (filepath) => path.join('__fixtures__', filepath);
 
-const filename1 = 'number1.txt';
-const filename2 = 'number2.txt';
+const filename1 = 'one.txt';
+const filename2 = 'two.txt';
 
 const successfulCallChain = [
   (cb) => {
     const filepath = getFixturePath(filename1);
     fs.readFile(filepath, (err, data) => {
-      const num = Number(data.trim());
+      const num = Number(data);
       cb(err, num);
     });
   },
   (num1, cb) => {
     const filepath = getFixturePath(filename2);
     fs.readFile(filepath, (err, data) => {
-      const num2 = Number(data.trim());
+      const num2 = Number(data);
       cb(err, num1, num2);
     });
   },
@@ -32,7 +32,7 @@ const failedСallСhain = [
   (cb) => {
     const filepath = getFixturePath('not-exist-file');
     fs.readFile(filepath, (err, data) => {
-      const num = Number(data.trim());
+      const num = Number(data);
       cb(err, num);
     });
   },
@@ -44,15 +44,22 @@ const failedСallСhain = [
 
 const expected = 444;
 
-test('waterfall with successful сall сhain', () => {
-  waterfall(successfulCallChain, (err, result) => {
+// eslint-disable-next-line jest/no-test-callback
+test('waterfall with successful сall сhain', (done) => {
+  waterfall(successfulCallChain, (err, data) => {
+    const [actual] = data;
     expect(err).toBe(null);
-    expect(result).toBe(expected);
+    expect(actual).toBe(expected);
+    done();
   });
 });
 
-test('waterfall with failed сall сhain', () => {
-  waterfall(failedСallСhain, (err) => {
+// eslint-disable-next-line jest/no-test-callback
+test('waterfall with failed сall сhain', (done) => {
+  waterfall(failedСallСhain, (err, data) => {
+    const [actual] = data;
     expect(err).not.toBe(null);
+    expect(actual).not.toBe(expected);
+    done();
   });
 });
